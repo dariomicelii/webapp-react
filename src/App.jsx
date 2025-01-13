@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import MovieIndexPage from "./pages/books/MovieIndexPage";
+import MovieShowPage from "./pages/books/MovieShowPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
           <Route path="movies">
             <Route index element={<MovieIndexPage />}></Route>
+            <Route path=":id" element={<MovieShowPage />}></Route>
           </Route>
         </Route>
       </Routes>
