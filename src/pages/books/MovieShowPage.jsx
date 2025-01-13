@@ -20,6 +20,11 @@ export default function MovieShowPage() {
         <h1>Movie Detail</h1>
         {movie && <p>{movie.title}</p>}
       </div>
+      <div className="container pt-5">
+        <h1>Reviews</h1>
+
+        {/* capire come stampare le reviews */}
+      </div>
     </>
   );
 }
