@@ -4,7 +4,7 @@ export default function MovieIndexPage() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/api/movies";
+    const url = import.meta.env.VITE_BACKEND_URL + "api/movies";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
