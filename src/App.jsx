@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import MovieIndexPage from "./pages/books/MovieIndexPage";
 import MovieShowPage from "./pages/books/MovieShowPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
             <Route index element={<MovieIndexPage />}></Route>
             <Route path=":id" element={<MovieShowPage />}></Route>
           </Route>
+
+          <Route path="*" element={<NotFoundPage />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import ReviewsList from "../../components/reviews/ReviewsList";
 
 export default function MovieShowPage() {
   const [movie, setMovie] = useState(null);
+  const navigate = useNavigate();
   const movieId = useParams().id;
 
   useEffect(() => {
     const url = import.meta.env.VITE_BACKEND_URL + "api/movies/" + movieId;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 404) {
+          navigate("/not-found");
+        }
+        return res.json();
+      })
       .then((data) => {
         setMovie(data.movie);
       });
@@ -37,6 +43,10 @@ export default function MovieShowPage() {
               <p className="card-text">{movie.abstract}</p>
             </div>
           </div>
+
+          <hr />
+
+          <ReviewsList reviews={movie.reviews} />
         </div>
       )}
     </>
